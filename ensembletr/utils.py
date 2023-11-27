@@ -30,7 +30,8 @@ def GetEHScore(conf_invs, CNs, ru_len):
         print(f"Invalid copy numbers or intervals: {CNs}, {conf_invs}")
         return 0
     score1 = CalcEHAlleleScore(conf_invs[0], CNs[0])
-    return 0.8 * min(score1) + 0.2 * max(score1)
+    score2 = CalcEHAlleleScore(conf_invs[0], CNs[0])
+    return 0.8 * min(score1, score2) + 0.2 * max(score1, score2)
 
 def CalcEHAlleleScore(conf_inv, allele):
     r"""
